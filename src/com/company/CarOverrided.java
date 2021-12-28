@@ -11,18 +11,18 @@ package com.company;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Car {
+public class CarOverrided {
     private String brand;
     private String model;
     private int speed;
 
-    public Car() {
+    public CarOverrided() {
         this.brand = "";
         this.model = "";
         this.speed = 0;
     }
 
-    public Car(String brand, String model, int speed) {
+    public CarOverrided(String brand, String model, int speed) {
         this.brand = brand;
         this.model = model;
         this.speed = speed;
@@ -59,7 +59,7 @@ public class Car {
 
     @Override
     public Object clone(){
-        Car car = new Car();
+        CarOverrided car = new CarOverrided();
         car.brand = this.brand;
         car.model = this.model;
         car.speed = this.speed;
@@ -86,12 +86,12 @@ public class Car {
 //    - вызов hashCode над неравными оъектами должен возвращать разные значения. Для этого правила могут быть исключения.
 
     @Override
-    public boolean equals(Object obj){
+    public boolean equals(Object obj){ // ArrayList работает с классом Object поэтому Object в качестве параметра
         if (this == obj) return true;
         if (obj == null || obj.getClass() != this.getClass()) {
             return false;
         }
-        Car car = (Car) obj;
+        CarOverrided car = (CarOverrided) obj;
         return brand == car.brand || (brand != null && brand.equals(car.getBrand())) &&
                 model == car.model || (model != null && model.equals((car.getModel()))) &&
                 speed == car.speed;
@@ -112,11 +112,11 @@ public class Car {
 
     public static void main(String[] args) {
 
-        List<Car> cars = new ArrayList<>();
-        cars.add(new Car("toyota", 130, "Corolla"));
-        cars.add(new Car("toyota", 130, "C-HR"));
-        cars.add(new Car("toyota", 180, "RAV4"));
-        cars.add(new Car("toyota", 150, "Yaris"));
+        List<CarOverrided> cars = new ArrayList<>();
+        cars.add(new CarOverrided("toyota", "Corolla", 130));
+        cars.add(new CarOverrided("toyota", "C-HR", 130));
+        cars.add(new CarOverrided("toyota", "RAV4", 180));
+        cars.add(new CarOverrided("toyota", "Yaris", 150));
 
         int i;
         for (i = 0; i < cars.size(); i++){
